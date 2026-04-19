@@ -1,0 +1,60 @@
+# -------------------------
+# Application
+# -------------------------
+app_name: "Promotion Service"
+environment: "development"  # production / staging / development
+log_level: "INFO"
+timezone: "UTC"
+
+# -------------------------
+# MongoDB
+# -------------------------
+mongo:
+  uri: "mongodb://localhost:27017"
+  db_name: "promotion_service_db"
+  max_pool_size: 50
+  min_pool_size: 10
+  connect_timeout_ms: 10000
+
+# -------------------------
+# Redis
+# -------------------------
+redis:
+  url: "redis:127.0.0.1:6379/0"
+  default_ttl: 3600  # seconds
+
+# -------------------------
+# Redpanda / Kafka
+# -------------------------
+redpanda:
+  bootstrap_servers: "127.0.0.1:9092"
+  promotion_topic: "promotions"
+  group_id: "promotion_service_group"
+  auto_offset_reset: "earliest"
+
+# -------------------------
+# Promotion defaults
+# -------------------------
+promotion:
+  default_discount_type: "percentage"
+  default_discount_value: 10.0
+  max_conditions: 10
+  cross_feature_enabled: true
+
+# -------------------------
+# Admin Panel / API
+# -------------------------
+admin_api:
+  enabled: true
+  host: "127.0.0.1"
+  port: 8001
+  auth_required: true
+  jwt_secret: "CHANGE_ME"
+
+# -------------------------
+# Service API
+# -------------------------
+service_api:
+  host: "127.0.0.1"
+  port: 8000
+  docs_enabled: true
